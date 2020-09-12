@@ -1,0 +1,60 @@
+\documentclass[12pt]{article}
+
+% Opening
+\title{Applied Combinatorics Worksheet 1}
+\author{Akash Narayanan}
+\usepackage{amsmath, amsfonts, amssymb, amsthm}
+
+% Problem environment
+\theoremstyle{definition}
+\newtheorem{problem-internal}{Problem}[]
+\newenvironment{problem}{
+  \medskip
+  \begin{problem-internal}
+}{
+\end{problem-internal}
+}
+
+% Solution environment
+\newenvironment{solution}{
+  \begin{proof}[Solution]
+    \vspace{-8px}
+    \setlength{\parskip}{4px}
+    \setlength{\parindent}{0px}
+}{
+\end{proof}
+}
+
+\begin{document}
+
+  \maketitle
+
+  % Problem 1
+  \begin{problem}
+    The Greek alphabet consists of 24 letters. How many five-character strings can be made using the Greek alphabet (ignoring the distinction between uppercase and lowercase)?
+  \end{problem}
+  \begin{solution}
+    Since each choice of letter is independent of the others and there are 24 options for each of the 5 letters, there are $24^5 = 7962624$ total possible strings.
+  \end{solution}
+
+  % Problem 2
+  \begin{problem}
+    Assume that a license plate consists of 3 Latin alphabet letters followed by 4 numerals. How many license plates are there such that the numerals are distinct from one another and the last numeral is less than 3?
+  \end{problem}
+  \begin{solution}
+    The Latin alphabet has 26 letters. Since there are no restrictions imposed on the 3 letters on the plate, there are $26^3$ strings of 3 letters. For the numerals, first consider the restriction on the last numeral. There are only three possible values for it, namely 0, 1, and 2. Since the numerals must be distinct, we remove these three values from the options for the first and second numeral. Thus there are P(7, 2) options for the first two digits.
+
+    Putting this all together, we find that there are
+    \[ 26^3 \times P(7, 2) \times 3 = 26^3 \times 7 \times 6 \times 3 = 2214576 \]
+    possible license plates satisfying the conditions.
+  \end{solution}
+
+  % Problem 3
+  \begin{problem}
+    Twenty-three students compete in a math competition in which the top three students are recognized with trophies for first, second, and third place. How many different outcomes are there for the top three places?
+  \end{problem}
+  \begin{solution}
+    Recognizing three students for distinct awards is a permutation of length three chosen from the twenty-three students. That is, there are $P(23, 3) = 10626$ possible outcomes.
+  \end{solution}
+
+\end{document}

@@ -1,0 +1,62 @@
+\documentclass[12pt]{article}
+
+% Opening
+\title{Applied Combinatorics Worksheet 1}
+\author{Akash Narayanan}
+\usepackage{amsmath, amsfonts, amssymb, amsthm}
+
+% Problem environment
+\theoremstyle{definition}
+\newtheorem{problem-internal}{Problem}[]
+\newenvironment{problem}{
+  \medskip
+  \begin{problem-internal}
+}{
+\end{problem-internal}
+}
+
+% Solution environment
+\newenvironment{solution}{
+  \begin{proof}[Solution]
+    \vspace{-8px}
+    \setlength{\parskip}{4px}
+    \setlength{\parindent}{0px}
+}{
+\end{proof}
+}
+
+\begin{document}
+
+  \maketitle
+
+  % Problem 1
+  \begin{problem}
+    Let \(\mathbb{N}\) denote the set of positive integers. When \( f : \mathbb{N} \rightarrow \mathbb{N} \) is a function, let \(E(f)\) be the function defined by \(E(f)(n) = 2^{f(n)}\). What is \(E^{5}(n^{2})\)?
+  \end{problem}
+
+  \begin{solution}
+    This gives the function
+    \begin{align*}
+      2^{2^{2^{2^{2^{n^{2}}}}}}
+    \end{align*}
+    which doesn't look very nice at all. That is a tower of five 2s with an \(n^2\) on top. It grows \textit{very} quickly. If this were an algorithm's running time, it would be be incredibly slow.
+  \end{solution}
+
+  % Problem 2
+  \begin{problem}
+    If you have to put \(n + 1\) pigeons into \(n\) holes, you have to put two pigeons into the same hole. What happens if you have to put \(mn + 1\) pigeons into \(m\) holes?
+  \end{problem}
+
+  \begin{solution}
+    You would have to put \(n + 1\) pigeons into the same hole (assuming the rest of the holes have \(n\) pigeons in them each). One way to consider this is by placing 1 pigeon in each of the \(m\) holes, leaving \(mn + 1 - m = m(n-1) + 1\) pigeons. This can be repeated \(n-1\) more times to ultimately put \(n\) pigeons in each hole. This leaves us with 1 extra pigeon that must go in one of the holes, meaning that one hole would have \(n+1\) pigeons.
+  \end{solution}
+
+  % Problem 3
+  \begin{problem}
+    Draw a graph with 6 vertices having degrees 5, 4, 4, 2, 1 and 1 or explain why such a graph does not exist.
+  \end{problem}
+
+  \begin{solution}
+    Such a graph cannot exist. Consider the theorem stating that the sum of the degrees of each vertex is equal to two times the number of edges. This theorem implies that the sum of the degrees must be even. Since the sum of the degrees given is odd, a graph with those degrees cannot possibly exist.
+  \end{solution}
+\end{document}
