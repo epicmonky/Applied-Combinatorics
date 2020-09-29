@@ -1,0 +1,108 @@
+\documentclass[12pt]{article}
+
+% Opening
+\title{Midterm 1}
+\author{Akash Narayanan}
+\usepackage{amsmath, amsfonts, amssymb, amsthm, enumitem, tikz}
+\usepackage{caption, subcaption, float, marginnote, mathtools}
+
+
+
+\reversemarginpar
+
+\begin{document}
+
+  \maketitle
+
+  \begin{enumerate}
+    \item (20 points) (a) (10 points) Use the Euclidean algorithm to find \(d = \text{gcd}(420, 245)\).
+
+    \begin{align*}
+      420 &= 1 \cdot 245 + 175 \\
+      245 &= 1 \cdot 175 + 70  \\
+      175 &= 2 \cdot 70  + 35  \\
+      70  &= 2 \cdot 35  + 0   \\
+      \Aboxed{d &= 35}
+    \end{align*}
+
+    (b) (10 points) Use your work in the preceding problem to find integers \(a\) and \(b\) so that \(d = 420a + 245b\).
+
+    \begin{align*}
+      35 &= 175 - 2 \cdot 70 \\
+         &= 175 - 2 \cdot (245 - 1 \cdot 175) \\
+         &= 3 \cdot 175 - 2 \cdot 245 \\
+         &= 3 \cdot (420 - 1 \cdot 245) - 2 \cdot 245 \\
+         &= 3 \cdot 420 - 5 \cdot 245
+    \end{align*}
+
+    \begin{equation*}
+      \boxed{a = 3, b = -5}
+    \end{equation*}
+
+    \pagebreak
+
+    \item (20 points) How many integer valued solutions to the following equations and inequalities:
+
+    \begin{enumerate}
+      \item (10 points) \(x_{1} + x_{2} + x_{3} = 42 \qquad x_{1}, x_{2}, x_{3} > 0\)
+
+      This is equivalent to asking how many ways 42 objects can be partitioned among 3 non-empty sets (since each variable is strictly greater than 0). Since there are 41 gaps between the objects to choose 3 partitions from, there are precisely \(41 \choose 3\) solutions to the equation. That is, there are \boxed{\text{10660 solutions.}}
+
+      \item (10 points) \(x_{1} + x_{2} + x_{3} = 42 \qquad x_{1}, x_{3} > 0, \quad 0 < x_{2} \leq 6\)
+
+      \(x_{1}\) and \(x_{3}\) can be treated in the same way as part (a). To account for the upper bound on \(x_{2}\), we subtract the number of partitions where \(x_{2} > 6\). To calculate this second number, we set aside 6 of the 42 objects to go towards \(x_{3}\) so that they can no longer be chosen. We find there are \({41 \choose 3} - {35 \choose 3} = \) \boxed{\text{4115 solutions.}}
+    \end{enumerate}
+
+    \pagebreak
+
+    \item (20 points) (a) (10 points) Find the coefficient of \(x^{4}y^{7}z^{24}\) in \((6x - 5y + 8z^{2})^{23}\)
+
+    By the multinomial theorem, expanding the polynomial \((6x - 5y + 8z^{2})^{23}\) yields terms in the form
+    \begin{align*}
+      {23 \choose k_{1}, k_{2}, k_{3}}(6x)^{k_{1}}(-5y)^{k_{2}}(8z^{2})^{k_{3}} = {23 \choose k_{1}, k_{2}, k_{3}}6^{k_{1}}(-5)^{k_{2}}8^{k_{3}}x^{k_{1}}y^{k_{2}}z^{2k_{3}}
+    \end{align*}
+    where \(k_{1} + k_{2} + k_{3} = 23\). The term in question, \(x^{4}y^{7}z^{24}\), implies that \(k_{1} = 4, k_{2} = 7, k_{3} = 12\) by elementary algebra. Indeed, \(4 + 7 + 12 = 23\). Then the multinomial coefficient is
+    \begin{align*}
+      {23 \choose 4, 7, 12}6^{4}(-5)^{7}8^{12} &= \boxed{\frac{23!}{4! 7! 12!} \cdot 6^{4} \cdot (-5)^{7} \cdot 8^{12}}
+    \end{align*}
+
+    (b) (10 points) Find the coefficient of \(x^{4}y^{7}z^{21}\) in \((6x - 5y + 8z^{2})^{23}\).
+
+    The term \(x^{4}y^{7}z^{21}\) does not appear in the expansion of the polynomial. This is because, as stated above, terms in the expansion are of the form
+    \begin{align*}
+      {23 \choose k_{1}, k_{2}, k_{3}}6^{k_{1}}(-5)^{k_{2}}8^{k_{3}}x^{k_{1}}y^{k_{2}}z^{2k_{3}}
+    \end{align*}
+    In particular, notice that the exponent of \(z\) is \(2 k_{3}\) so the exponent of \(z\) in every term of the expansion is even (since \(k_{3} \) is an integer). Certainly, 21 is not an even number. Thus, the term does not appear in the expansion so \boxed{\text{the coefficient is 0.}}
+
+    \pagebreak
+
+    \item (20 points) How many lattice paths from (0, 0) to (24, 31) do not pass through (15, 19)?
+
+    This is equivalent to counting the total number of lattice paths from (0, 0) to (24, 31) and then subtracting the number of lattice paths that \textit{do} pass through (15, 19). The number of paths from (0, 0) to (24, 31) is given by \({24 + 31 \choose 24}\). The number of paths that go through (15, 19) is calculated by finding the product of the number of paths from (0, 0) to (15, 19) and the number of paths from (15, 19) to (24, 31). This number is \({15 + 19 \choose 15} {9 + 11 \choose 9}\).
+    Thus, the number of paths that do not pass through (15, 19) is
+    \begin{align*}
+      {24 + 31 \choose 24} - {15 + 19 \choose 15} {9 + 11 \choose 9} \\ = \boxed{{55 \choose 24} - {34 \choose 15} {20 \choose 9}}
+    \end{align*}
+
+    \pagebreak
+
+    \item (20 points) For a positive integer \(n\), let \(t_{n}\) count the number of ternary strings of length \(n\) that do not contain 102 as a subtring. Note that \(t_{1} = 3, t_{2} = 9, \text{ and } t_{3} = 26\). Develop a recurrence relation for \(t_{n}\) and use it to compute \(t_{4}, t_{5}, \text{ and } t_{6}\).
+
+    We develop the recurrence relation by forming all of the strings of length \(n\) from the valid strings of length \(n-1\). There are \(3t_{n-1}\) of these, formed by appending one of the three possible integers to the end of a string.
+
+    Now we count the number of bad strings in this set. Certainly the number of strings ending in 102 is equal to the number of good strings of length \(n-1\) ending with 10 (since we simply append a 2 at the end to form a bad string). Similarly, we can see how the number of good strings of length \(n-1\) ending with 10 is equal to the number of good strings of length \(n-2\) ending with 1. We repeat the reasoning to see that this is equivalent to the number of good strings of length \(n-3\), which is just \(t_{n-3}\).
+
+    Thus, our recurrence relation is as follows
+    \begin{align*}
+      \boxed{t_{n} = 3t_{n-1} - t_{n-3}}
+    \end{align*}
+    We compute some more values for \(t_{n}\):
+    \begin{align*}
+      t_{4} &= 3 \cdot 26  - 3  = 75  \\
+      t_{5} &= 3 \cdot 75  - 9  = 216 \\
+      t_{6} &= 3 \cdot 216 - 26 = 622
+    \end{align*}
+
+  \end{enumerate}
+
+\end{document}

@@ -1,6 +1,14 @@
-alphabet = ['0', '1', '2', '3']
+import argparse
 
-stringLength = 4
+parser = argparse.ArgumentParser()
+parser.add_argument("stringLength", type=int,
+                    help="length of each word")
+
+args = parser.parse_args()
+
+alphabet = ['0', '1', '2']
+
+stringLength = args.stringLength
 
 def makeAllWords(length):
     wordList = []
@@ -19,7 +27,7 @@ def makeAllWords(length):
 
 
 def removeBadStrings(stringList):
-    filteredList = [word for word in stringList if word.find('12') == -1 and word.find('20') == -1]
+    filteredList = [word for word in stringList if word.find('102') == -1]
     return filteredList
 
 
