@@ -1,0 +1,135 @@
+\documentclass[12pt]{article}
+
+% Opening
+\title{Applied Combinatorics Homework 4}
+\author{Akash Narayanan}
+\usepackage{amsmath, amsfonts, amssymb, amsthm, enumitem, tikz}
+\usepackage{caption, subcaption, float}
+
+% Problem counters
+\newcounter{chapternumber}
+
+
+% Problem environment
+\theoremstyle{definition}
+\newtheorem{problem-internal}{Problem}[chapternumber]
+\newenvironment{problem}{
+  \medskip
+  \begin{problem-internal}
+}{
+\end{problem-internal}
+}
+
+% Solution environment
+\newenvironment{solution}{
+  \begin{proof}[Solution]
+    \vspace{-8px}
+    \setlength{\parskip}{4px}
+    \setlength{\parindent}{0px}
+}{
+\end{proof}
+}
+
+\begin{document}
+
+  \maketitle
+
+  % Problem 7.11
+  \setcounter{chapternumber}{7}
+  \begin{problem}
+    A school has 147 third graders. The third grade teachers have planned a special treat for the last day of school and brought ice cream for their students.
+    There are three flavors: mint chip, chocolate, and strawberry.
+    Suppose that 60 students like (at least) mint chip, 103 like chocolate, 50 like strawberry, 30 like mint chip and strawberry, 40 like mint chip and chocoloate, 25 like chocolate and strawberry, and 18 like all three flavors.
+    How many students don't like any of the flavors available?
+  \end{problem}
+
+
+  % Problem 7.5
+  \setcounter{problem-internal}{4}
+  \begin{problem}
+    How many positive integers less than or equal to 1000 are divisible by none of 3, 8, and 25?
+  \end{problem}
+
+
+  % Problem 7.11
+  \setcounter{problem-internal}{10}
+  \begin{problem}
+    Let \(X\) be the set of functions from \([n]\) to \([m]\) and let a function \(f \in X\) satisfy property \(P_{i}\) if there is no \(j\) such that \(f(j) = i\).
+    \begin{enumerate}[label={\alph*.}]
+      \item Let the function \(f:[8] \rightarrow [7]\) be defined by the table below.
+      Does \(f\) satisfy property \(P_{2}\)? Why or why not?
+      What about property \(P_{3}\)? List all the properties \(P_{i}\) with \(i \leq 7\) satisfied by \(f\).
+
+      \begin{table}[H]
+        \centering
+        \begin{tabular}{c c c c c c c c c}
+          \(i\) & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\
+          \hline
+          \(f(i)\) & 4 & 2 & 6 & 1 & 6 & 2 & 4 & 2
+        \end{tabular}
+        \caption{A table defining a function}
+      \end{table}
+
+      \item Is it possible to define a function \(g:[8] \rightarrow [7]\) that satisfies no property \(P_{i}\) for \(i \leq 7\)?
+      If so, give an example. If not, explain why not.
+
+      \item Is it possible to define a function \(h:[8] \rightarrow [9]\) that satisfies no property \(P_{i}\) for \(i \leq 9\)? If so, give an example. If not, explain why.
+    \end{enumerate}
+  \end{problem}
+
+
+  % Problem 7.19
+  \setcounter{problem-internal}{18}
+  \begin{problem}
+    How many derangements of a nine-element set are there?
+  \end{problem}
+
+
+  % Problem 8.2 (a, c, d, f, i)
+  \setcounter{chapternumber}{8}
+  \setcounter{problem-internal}{1}
+  \begin{problem}
+    For each \textit{infinite} sequence suggested below, give its generating function in closed form, i.e. \textit{not} as an infinite sum.
+    (Use the most obvious choice of form for the general term of each sequence.)
+    \begin{enumerate}[label={\alph*.}]
+      \item \(0, 1, 1, 1, 1, 1, \ldots\)
+      \item \(1, 2, 4, 8, 16, 32, \ldots\)
+      \item \(0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, \ldots\)
+      \item \(2^{8}, 2^{7} {8 \choose 1}, 2^{6} {8 \choose 2}, \ldots, {8 \choose 8}, 0, 0, \ldots\)
+      \item \(3, 2, 4, 1, 1, 1, 1, 1, 1, \ldots\)
+    \end{enumerate}
+  \end{problem}
+
+
+  % Problem 8.7
+  \setcounter{problem-internal}{6}
+  \begin{problem}
+    Consider the inequality
+    \begin{equation*}
+      x_{1} + x_{2} + x_{3} + x_{4} \leq n
+    \end{equation*}
+    where \(x_{1}, x_{2}, x_{3}, x_{4}, n \geq 0\) are all integers.
+    Suppose also that \(x_{2} \geq 2\), \(x_{3}\) is a multiple of 4, and \(0 \leq x_{4} \leq 3\).
+    Let \(c_{n}\) be the number of solutions of the inequality subject to these restrictions.
+    Find the generating function for the sequence \(\{c_{n}: n \geq 0\}\) and use it to find a closed formula for \(c_{n}\).
+  \end{problem}
+
+
+  % Problem 8.9
+  \setcounter{problem-internal}{8}
+  \begin{problem}
+    What is the generating function for the number of ways to select a group of \(n\) students from a class of \(p\) students?
+  \end{problem}
+
+
+  % Problem 8.21 (a, b, c, d)
+  \begin{problem}
+    For each exponential generating function below, give a formula in closed form for the sequence \(\{a_{n}: n \geq 0\) it represents.
+    \begin{enumerate}[label={\alph*.}]
+      \item \(e^{7x}\)
+      \item \(x^{2} e^{3x}\)
+      \item \(\frac{1}{1+x}\)
+      \item \(e^{x^{4}}\)
+    \end{enumerate}
+  \end{problem}
+\end{document}

@@ -1,0 +1,81 @@
+\documentclass[12pt]{article}
+
+% Opening
+\title{Applied Combinatorics Homework 4}
+\author{Akash Narayanan}
+\usepackage{amsmath, amsfonts, amssymb, amsthm, enumitem, tikz}
+\usepackage{caption, subcaption, float}
+
+% Problem environment
+\theoremstyle{definition}
+\newtheorem{problem-internal}{Problem}[]
+\newenvironment{problem}{
+  \medskip
+  \begin{problem-internal}
+}{
+\end{problem-internal}
+}
+
+% Solution environment
+\newenvironment{solution}{
+  \begin{proof}[Solution]
+    \vspace{-8px}
+    \setlength{\parskip}{4px}
+    \setlength{\parindent}{0px}
+}{
+\end{proof}
+}
+
+\begin{document}
+
+  \maketitle
+
+  % Problem 1
+  \begin{problem}
+    How many positive integers less than or equal to 1000 are divisible by none of 3, 8, and 25?
+  \end{problem}
+
+  \begin{solution}
+    We can apply the principle of Inclusion-Exclusion to positive integers less than or equal to 1000.
+    First note that the number of positive integers less than or equal to 1000 divisible by \(k\) is \(\lfloor{\frac{1000}{k}}\rfloor\). In particular, this counts the number of multiples of \(k\) less than or equal to 1000.
+    Then we have
+    \begin{displaymath}
+      1000 - \lfloor{\frac{1000}{3}}\rfloor - \lfloor{\frac{1000}{8}}\rfloor - \lfloor{\frac{1000}{25}}\rfloor + \lfloor{\frac{1000}{3 \cdot 8}}\rfloor + \lfloor{\frac{1000}{3 \cdot 25}}\rfloor + \lfloor{\frac{1000}{8 \cdot 25}}\rfloor - \lfloor{\frac{1000}{3 \cdot 8 \cdot 25}}\rfloor = 560
+    \end{displaymath}
+    Thus, there are 560 positive integers less than or equal to 1000 that are divisible by none of 3, 8, and 25.
+  \end{solution}
+
+  % Problem 2
+  \begin{problem}
+    Find the coefficient on \(x^{10}\) in the generating function \(\left(1 + x\right)^{12}\).
+  \end{problem}
+
+  \begin{solution}
+    We can find the coefficient of \(x^{10}\) by using the binomial theorem, which states that the coefficient of \(x^{10}\) is \({12 \choose 10} = 66\).
+  \end{solution}
+
+  % Problem 3
+  \begin{problem}
+    Solve the recurrence equation \(r_{n+2} = r_{n+1} + 2r_{n}\) if \(r_{0} = 1, r_{2} = 3\).
+  \end{problem}
+
+  \begin{solution}
+    We can rewrite the recurrence as a polynomial in the advancement operator.
+    \begin{align*}
+      (A^{2} - A - 2) f(n) = 0
+    \end{align*}
+    The polynomial in \(A\) factors into \((A - 2)(A + 1)\).
+    The corresponding bases for the solution space are \(2^{n}\) and \((-1)^{n}\).
+    Thus, the general solution to the recurrence relation is \(r_{n} = c_{0}2^{n} + c_{1}(-1)^n\).
+
+    We're given two conditions. Using the first, we have \(r_{0} = c_{0}2^{0} + c_{1}(-1)^{0}\).
+    That is, \(c_{0} + c_{1} = 1\). Similarly, the second condition yields \(8c_{0} + c_{1} = 3\).
+    Using the first equation, we solve for \(c_{1} = 1 - c_{0}\), which we can substitute into the second equation.
+    This shows that \(7c_{0} = 2 \) which implies that \(c_{0} = \frac{2}{7}\).
+    Finally, we can substitute this back into one of the previous equations to solve for \(c_{1} = \frac{5}{7}\). Thus our recurrence is
+    \begin{align*}
+      r_{n} = \frac{2}{7} \cdot 2^{n} + \frac{5}{7} \cdot (-1)^{n}
+    \end{align*}
+  \end{solution}
+
+\end{document}
