@@ -1,0 +1,76 @@
+\documentclass[12pt]{article}
+
+% Opening
+\title{Applied Combinatorics Homework 6}
+\author{Akash Narayanan}
+\usepackage{amsmath, amsfonts, amssymb, amsthm, enumitem, tikz}
+\usepackage{caption, subcaption, float}
+
+% Problem counters
+\newcounter{chapternumber}
+
+
+% Problem environment
+\theoremstyle{definition}
+\newtheorem{problem-internal}{Problem}[chapternumber]
+\newenvironment{problem}{
+  \medskip
+  \begin{problem-internal}
+}{
+\end{problem-internal}
+}
+
+% Solution environment
+\newenvironment{solution}{
+  \begin{proof}[Solution]
+    \vspace{-8px}
+    \setlength{\parskip}{4px}
+    \setlength{\parindent}{0px}
+}{
+\end{proof}
+}
+
+\begin{document}
+
+  \maketitle
+
+  % Problem 10.1
+  \setcounter{chapternumber}{10}
+  \begin{problem}
+    Our gang of seven (Alice, Bob, Carlos, Dave, Xing, Yolanda and Zori) are students in a class with a total enrollment of 35. The professor chooses three students at random to go to the board to work challenge problems.
+    \begin{enumerate}[label={\alph*.}]
+      \item What is the probability that Yolanda is chosen?
+      \item What is the probability that Yolanda is chosen and Zori is not?
+      \item What is the probability that exactly two members of the club are chosen?
+      \item What is the probability that none of the seven members of the club are chosen?
+    \end{enumerate}
+  \end{problem}
+
+
+  % Problem 10.2
+  \begin{problem}
+    Bob says to no one in particular, ``Did you know that the probability that you will get at least one `7' in three rolls of a pair of dice is slightly less than 1/2. On the other hand, the probability that you'll get at least on '5' in six rolls of the dice is just over 1/2." Is Bob on target, or out to lunch?
+  \end{problem}
+
+
+  % Problem 10.3
+  \begin{problem}
+    Consider the spinner shown in the figure below.
+    % Insert spinner here
+    \begin{enumerate}[label={\alph*.}]
+      \item What is the probability of getting at least one ``5" in three spins?
+      \item What is the probability of getting at least one ``3" in three spins?
+      \item If you keep spinning until you get either a ``2" or a ``5", what is the probability that you get a ``2" first?
+      \item If you receive \(i\) dollars when the spinner halts in region \(i\), what is the expected value? Since three is right in the middle of the possible outcomes, is it reasonable to pay three dollars to play this game?
+    \end{enumerate}
+  \end{problem}
+
+  % Problem 10.4
+  \begin{problem}
+    Alice proposes to Bob the following game. Bob pays one dollar to play.
+    Fifty balls marked \(1, 2, \ldots 50\) are placed in a big jar, stirred around, and then drawn out one by one by Zori, who is wearing a blindfold.
+    The result is a random permutation \(\sigma\) of the integers \(1, 2, \ldots, 50\).
+    Bob wins with a payout of two dollars and fifty cents if the permutation \(\sigma\) is a derangement, i.e., \(\sigma(i) \neq i\) for all \(i = 1, 2, \ldots, n\).
+    Is this a fair game for Bob? If not, how should the payoff be adjusted to make it fair?
+  \end{problem}
+\end{document}

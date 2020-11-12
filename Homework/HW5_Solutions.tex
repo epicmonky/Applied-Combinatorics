@@ -1,7 +1,7 @@
 \documentclass[12pt]{article}
 
 % Opening
-\title{Applied Combinatorics Homework 4}
+\title{Applied Combinatorics Homework 5}
 \author{Akash Narayanan}
 \usepackage{amsmath, amsfonts, amssymb, amsthm, enumitem, tikz}
 \usepackage{caption, subcaption, float}
@@ -43,12 +43,33 @@
     How many students don't like any of the flavors available?
   \end{problem}
 
+  \begin{solution}
+    Using the Inclusion-Exclusion Principle, we can find how many students don't like any of the flavors as follows:
+    \begin{align*}
+      1000 &- 60 - 103 - 50 \\
+           &+ 30 +  40 + 25 \\
+           &- 18 \\
+           &= 864
+    \end{align*}
+    That is, 864 students don't like any of the flavors.
+  \end{solution}
+
 
   % Problem 7.5
   \setcounter{problem-internal}{4}
   \begin{problem}
     How many positive integers less than or equal to 1000 are divisible by none of 3, 8, and 25?
   \end{problem}
+
+  \begin{solution}
+    The number of positive integers less than or equal to \(n\) divisible by \(k\) is \(\lfloor{\frac{n}{k}}\rfloor\). In particular, this counts the number of multiples of \(k\) less than or equal to \(n\).
+
+    Then we have
+    \begin{displaymath}
+      1000 - \lfloor{\frac{1000}{3}}\rfloor - \lfloor{\frac{1000}{8}}\rfloor - \lfloor{\frac{1000}{25}}\rfloor + \lfloor{\frac{1000}{3 \cdot 8}}\rfloor + \lfloor{\frac{1000}{3 \cdot 25}}\rfloor + \lfloor{\frac{1000}{8 \cdot 25}}\rfloor - \lfloor{\frac{1000}{3 \cdot 8 \cdot 25}}\rfloor = 560
+    \end{displaymath}
+    Thus, there are 560 positive integers less than or equal to 1000 that are divisible by none of 3, 8, and 25.
+  \end{solution}
 
 
   % Problem 7.11
@@ -77,12 +98,44 @@
     \end{enumerate}
   \end{problem}
 
+  \begin{solution}
+    \hfill
+    \begin{enumerate}[label={\alph*.}]
+      \item \(P_{2}\) states that there is no \(j\) such that \(f(j) = 2\). Looking at the table for \(f\), we can see that \(f(8) = 2\).
+      Therefore, \(f\) does not satisfy \(P_{2}\).
+      However, \(P_{3}\) is satisfied because there is no \(j\) such that \(f(j) = 3\). Furthermore, \(f\) satisfies \(P_{5}\) and \(P_{7}\).
+
+      \item Yes, it is possible. Define \(g\) as follows:
+
+      \begin{table}[H]
+        \centering
+        \begin{tabular}{c c c c c c c c c}
+          \(i\) & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\
+          \hline
+          \(f(i)\) & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 7
+        \end{tabular}
+        % \caption{A table defining a function}
+      \end{table}
+      Then for all \(i \leq 7\), there exists a \(j\) such that \(g(j) = i\).
+
+      \item No, it is not possible. Such a function \(h\) would have to be surjective. For a surjection to exist from \(A\) to \(B\), we need \(|A| \geq |B|\). However, \(|[8]| < |[9]|\) so such a function cannot exist. Namely, there is always at least one element of \([9]\) that does not get mapped to.
+    \end{enumerate}
+  \end{solution}
+
 
   % Problem 7.19
   \setcounter{problem-internal}{18}
   \begin{problem}
     How many derangements of a nine-element set are there?
   \end{problem}
+
+  \begin{solution}
+    By Inclusion-Exclusion, the number of derangements \(d_{n}\) on \(n\) elements is given by
+    \begin{align*}
+      d_{n} = \sum_{k = 0}^{n} (-1)^{k} {n \choose k} (n - k)!
+    \end{align*}
+    Letting \(n = 9\), we find that \(d_{n} = 133496\).
+  \end{solution}
 
 
   % Problem 8.2 (a, c, d, f, i)
@@ -93,12 +146,85 @@
     (Use the most obvious choice of form for the general term of each sequence.)
     \begin{enumerate}[label={\alph*.}]
       \item \(0, 1, 1, 1, 1, 1, \ldots\)
+      \addtocounter{enumi}{1}
       \item \(1, 2, 4, 8, 16, 32, \ldots\)
       \item \(0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, \ldots\)
+      \addtocounter{enumi}{1}
       \item \(2^{8}, 2^{7} {8 \choose 1}, 2^{6} {8 \choose 2}, \ldots, {8 \choose 8}, 0, 0, \ldots\)
+      \addtocounter{enumi}{2}
       \item \(3, 2, 4, 1, 1, 1, 1, 1, 1, \ldots\)
     \end{enumerate}
   \end{problem}
+
+  \begin{solution}
+    \hfill
+    \begin{enumerate}[label={\alph*.}]
+      \item The generating function \(f(x)\) takes the form
+      \begin{align*}
+        f(x) &= x + x^{2} + x^{3} + x^{4} \cdots \\
+             &= x (1 + x + x^{2} + x^{3} \cdots)
+      \end{align*}
+      Recall that the generating function for the factor on the right is
+      \begin{align*}
+        1 + x + x^2 + x^3 + \cdots = \frac{1}{1 - x}
+      \end{align*}
+      Thus, we have
+      \begin{align*}
+        f(x) = \frac{x}{1 - x}
+      \end{align*}
+
+      \addtocounter{enumi}{1}
+
+      \item The generating function \(f(x)\) takes the form
+      \begin{align*}
+        f(x) &= 1 + 2x + 4x^{2} + 8x^{3} + \cdots + (2x)^{n} + \cdots
+      \end{align*}
+      We can substitute this into the generating function referenced in part a and see that
+      \begin{align*}
+        f(x) = \frac{1}{1 - 2x}
+      \end{align*}
+
+      \item The generating function \(f(x)\) takes the form
+      \begin{align*}
+        f(x) &= x^{4} + x^{5} + x^{6} + x^{7} \cdots \\
+             &= x^{4} (1 + x + x^{2} + x^{3} + \cdots)
+      \end{align*}
+      Once again, we know the generating function
+      \begin{align*}
+        1 + x + x^{2} + x^{3} + \cdots = \frac{1}{1 - x}
+      \end{align*}
+      Then we find the generating function for the sequence is
+      \begin{align*}
+        f(x) = \frac{x^{4}}{1 - x}
+      \end{align*}
+
+      \addtocounter{enumi}{1}
+
+      \item The general term for each sequence is
+      \begin{align*}
+        2^{8 - n}{8 \choose n} = 2^{n} {8 \choose n}
+      \end{align*}
+      The generating function for \(8 \choose n\) is given by \((1 + x)^8\).
+      This is because expanding the binomial means the coefficient of \(x^n\) involves choosing an \(x\) from the 8 factors \(n\) times.
+      To include the \(2^n\), we simply replace the \(x\) with a \(2x\) in the generating function so that the coefficient of \(x^n\) has the \({8 \choose n}\) as well as a \(2^n\).
+      Thus, the generating function for the sequence is
+      \begin{align*}
+        f(x) = (1 + 2x)^8
+      \end{align*}
+
+      \addtocounter{enumi}{2}
+
+      \item For this sequence, we simply adjust the generating function for the sequence \(a_n = 1\). Indeed, we know
+      \begin{align*}
+        \frac{1}{1 - x} = 1 + x + x^2 + x^3 + \cdots
+      \end{align*}
+      Thus, we can add the necessary terms to adjust the coefficients of \(1\), \(x\), and \(x^2\).
+      Then we have
+      \begin{align*}
+        f(x) = \frac{1}{1 - x} + 3x^2 + x + 2
+      \end{align*}
+    \end{enumerate}
+  \end{solution}
 
 
   % Problem 8.7
@@ -114,6 +240,61 @@
     Find the generating function for the sequence \(\{c_{n}: n \geq 0\}\) and use it to find a closed formula for \(c_{n}\).
   \end{problem}
 
+  \begin{solution}
+    The solution involves finding the generating function for each variable and multiplying them.
+    We start by introducing a fifth variable \(x_5 \geq 0\) which will force the equality to hold.
+    Each variable has a generating sequence depending on \(n\) and the constraints specified.
+    \(x_1\) has no extra constraints so it generates the sequence
+    \begin{align*}
+      x_{1_{n}} = 1
+    \end{align*}
+    Thus, it is generated by the function
+    \begin{align*}
+      \sum_{n=0}^{\infty} x^n = \frac{1}{1 - x}
+    \end{align*}
+    \(x_2\) must be greater than or equal to 2, so the generating function is
+    \begin{align*}
+      \sum_{n=0}^{\infty} = \frac{x^2}{1 - x}
+    \end{align*}
+    which corresponds with all the powers of \(x\) greater than or equal to 2.
+    \(x_3\) is a multiple of 4 so we consider the generating function
+    \begin{align*}
+      1 + x^4 + x^8 + x^{12} + \cdots = \frac{1}{1 - x^4}
+    \end{align*}
+    \(x_4\) is less than 4 so it is generated by
+    \begin{align*}
+      1 + x + x^2 + x^3 = \frac{1 - x^4}{1 - x}
+    \end{align*}
+    or the powers of \(x\) less than 4.
+    Finally, \(x_5\) has the same constraints as \(x_1\) so it is generated by
+    \begin{align*}
+      \sum_{n = 0}^{\infty} x^n = \frac{1}{1 - x}
+    \end{align*}
+    We multiply these generating functions and find
+    \begin{gather*}
+      \frac{1}{1 - x} \cdot \frac{x^2}{1 - x} \cdot \frac{1}{1 - x^4} \cdot \frac{1 - x^4}{1 - x} \cdot \frac{1}{1 - x} \\
+      = \frac{x^2}{(1 - x)^4}
+    \end{gather*}
+    We recall the generation function for the binomial coefficient \(C(n+r-1, r-1)\) for fixed \(r\) is given by
+    \begin{align*}
+      \frac{1}{(1 - x)^n}
+    \end{align*}
+    Then we have
+    \begin{align*}
+      \frac{x^2}{(1 - x)^4} &= \sum_{n = 0}^{\infty} {n + 3 \choose 3} x^{n+2} \\
+      &= \sum_{n=2}^{\infty} {n + 1 \choose 3} x^n \\
+      &= \sum_{n=0}^{\infty} {n + 1 \choose 3} x^n
+    \end{align*}
+    Thus, the generating function for \(c_n\) is given by
+    \begin{align*}
+      \frac{x^2}{(1 - x)^4}
+    \end{align*}
+    and the sequence is
+    \begin{align*}
+      c_n = {n + 1 \choose 3}
+    \end{align*}
+  \end{solution}
+
 
   % Problem 8.9
   \setcounter{problem-internal}{8}
@@ -121,8 +302,17 @@
     What is the generating function for the number of ways to select a group of \(n\) students from a class of \(p\) students?
   \end{problem}
 
+  \begin{solution}
+    The generating function for \({p \choose n}\) is given by
+    \begin{align*}
+      f(x) = (1 + x)^p
+    \end{align*}
+    This is because the coefficient of \(x^n\) is the number of ways to select \(x\) \(n\) times from the \(p\) factors of the binomial expansion.
+  \end{solution}
+
 
   % Problem 8.21 (a, b, c, d)
+  \setcounter{problem-internal}{20}
   \begin{problem}
     For each exponential generating function below, give a formula in closed form for the sequence \(\{a_{n}: n \geq 0\) it represents.
     \begin{enumerate}[label={\alph*.}]
@@ -132,4 +322,72 @@
       \item \(e^{x^{4}}\)
     \end{enumerate}
   \end{problem}
+
+  \begin{solution}
+    Recall that the general form for an exponential generating function is
+    \begin{align*}
+      f(x) = \sum_{n = 0}^{\infty} a_{n} \frac{x^n}{n!}
+    \end{align*}
+    \begin{enumerate}[label={\alph*.}]
+      \item The generating function \(e^x\) represents the sequence \(a_{n} = 1\). The sequence generated by \(e^{7x}\) is determined by its Taylor series which is shown below.
+      \begin{align*}
+        e^{7x} = \sum_{n=0}^{\infty} \frac{(7x)^{n}}{n!} = 1 + 7x + 7^2 \frac{x^2}{2!} + 7^3 \frac{x^3}{3!} + \cdots
+      \end{align*}
+      Thus, \(e^{7x}\) represents the sequence
+      \begin{align*}
+        a_{n} = 7^{n}
+      \end{align*}
+
+      \item The Taylor series for \(e^{3x}\) is
+      \begin{align*}
+        e^{3x} = \sum_{n = 0}^{\infty} \frac{(3x)^n}{n!}
+      \end{align*}
+      Multiplying by \(x^2\) yields
+      \begin{align*}
+        x^{2} e^{3x} &= \sum_{n = 0}^{\infty} \frac{3^n x^{n+2}}{n!} \\
+        &= \sum_{n = 2}^{\infty} \frac{3^{n - 2} x^n}{(n - 2)!} \\
+        &= \sum_{n = 2}^{\infty} \frac{n (n - 1) 3^{n-2} x^{n}}{n!} \\
+        &= \sum_{n = 0}^{\infty} \frac{n (n - 1) 3^{n-2} x^{n}}{n!}
+      \end{align*}
+      Thus, the sequence generated for \(n \geq 0\) is
+      \begin{align*}
+        a_{n} = n (n - 1) 3^{n - 2}
+      \end{align*}
+
+      \item Consider the generating function
+      \begin{align*}
+        \frac{1}{1 - x} &= 1 + x + x^2 + x^3 + \cdots \\
+        &= \sum_{n=0}^{\infty} x^n
+      \end{align*}
+      Substituting in \(-x\), we find the generating function
+      \begin{align*}
+        \frac{1}{1 + x} &= 1 + (-x) + (-x)^2 + (-x)^3 + \cdots \\
+        &= \sum_{n=0}^{\infty} (-1)^n x^n \\
+        &= \sum_{n=0}^{\infty} (-1)^n n! \frac{x^n}{n!}
+      \end{align*}
+      As an exponential generating function, this represents the sequence
+      \begin{align*}
+        a_n = (-1)^n n!
+      \end{align*}
+
+      \item Consider the Taylor series for \(e^x\) shown below.
+      \begin{align*}
+        e^{x} = \sum_{n = 0}^{\infty} \frac{x^n}{n!}
+      \end{align*}
+      Substituting in \(x^4\) for \(x\), we find the Taylor series becomes
+      \begin{align*}
+        e^{x^{4}} &= \sum_{n = 0}^{\infty} \frac{x^{4n}}{n!} \\
+        &= \sum_{n = 0}^{\infty} \frac{(4n)!}{n!} \frac{x^{4n}}{(4n)!}
+      \end{align*}
+      We make this transformation so we can reindex the summation over only multiples of 4. That is,
+      \begin{align*}
+        e^{x^4} = \sum_{4 \mid n} \frac{n!}{(n / 4)!} \frac{x^n}{n!}
+      \end{align*}
+      Then the generated sequence is
+      \begin{align*}
+        a_n &= \frac{n!}{(n/4)!} \text{ when } 4 \mid n \\
+        a_n &= 0 \text{ when } 4 \nmid n
+      \end{align*}
+    \end{enumerate}
+  \end{solution}
 \end{document}

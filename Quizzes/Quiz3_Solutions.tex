@@ -1,0 +1,35 @@
+\documentclass[12pt]{article}
+
+% Opening
+\title{Applied Combinatorics Quiz 3}
+\author{Akash Narayanan}
+\usepackage{amsmath, amsfonts, amssymb, amsthm, enumitem, tikz}
+\usepackage{caption, subcaption, float, marginnote}
+
+\reversemarginpar
+
+% Putting the margin at the beginnning of the item forces it to print on the same line as the numbering :/
+
+\begin{document}
+
+  \maketitle
+
+  True-False:
+
+  \begin{enumerate}
+    \item \marginnote{F} The number of partitions of an integer \(n\) into even parts is equal to the number of partitions of \(n\) into parts, all of which have the same size.
+    % Consider n = 9. Clearly 9 cannot be partitioned into strictly even parts since the sum of two even numbers is even. However, it can be partitioned into 3 + 3 + 3. Thus, one set is strictly larger than the other.
+
+    \item \marginnote{F} Generating functions of the form \(f(x) = \sum_{n=0}^{\infty} a_{n} x^{n}\) are only applied in combinatorics when they are a Taylor series.
+    % All ordinary generating functions are in this form.
+
+    \item \marginnote{F} \(f(x) = \sum_{n=0}^{\infty} a_{n} x^{n}\) is the form of exponential generating functions.
+    % Exponential generating functions have the form \(\sum_{n=0}^{\infty} a_{n} \frac{x^{n}}{n!}\)
+
+    \item \marginnote{F} When \(p(A)\) is a polynomial in the advancement operator \(A\) and the degree of this polynomial is \(d = 5^{2} \cdot 7^{4}\), the solution space to the equation \(p(A) f(n)\) is a vector space whose dimension is \(d(1 - \frac{1}{5})(1 - \frac{1}{7})\).
+    % The solution set of an order d recurrence has dimension d. Clearly, d(1 - 1/5)(1 - 1/7) != d.
+
+    \item \marginnote{F} \((A - 5) f(n) = 8 \cdot 5^{n}\) has solution \(f(n) = c \cdot 5^{n}\) where \(c\) is constant.
+    % Let c = 1. Then (A - 5) 5^{n} = 5^{n+1} - 5^{n+1} = 0 != 8 \cdot 5^{n+1}
+  \end{enumerate}
+\end{document}
