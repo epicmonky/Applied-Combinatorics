@@ -6,7 +6,7 @@ parser.add_argument("stringLength", type=int,
 
 args = parser.parse_args()
 
-alphabet = ['0', '1', '2']
+alphabet = ['0', '1', '2', '3']
 
 stringLength = args.stringLength
 
@@ -27,7 +27,7 @@ def makeAllWords(length):
 
 
 def removeBadStrings(stringList):
-    filteredList = [word for word in stringList if word.find('102') == -1]
+    filteredList = [word for word in stringList if (word.find('11') == -1 and word.find('002') == -1)]
     return filteredList
 
 
